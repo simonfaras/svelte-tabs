@@ -13,8 +13,8 @@
     node: HTMLElement;
   }
 
-  let getTabId = (index: number): string => `${id}-tab-${index}`;
-  let getPanelId = (index: number): string => `${id}-panel-${index}`;
+  let getTabId = (tabId: string): string => `${id}-tab-${tabId}`;
+  let getPanelId = (tabId: string): string => `${id}-panel-${tabId}`;
 
   const activeTabId = writable<string>(null);
 
@@ -56,16 +56,17 @@
     role: "tablist",
   });
 
-  const getContentAttributes = (index: number) => ({
-    id: getPanelId(index),
+  const getContentAttributes = (tabId: string) => ({
+    id: getPanelId(tabId),
     role: "tabpanel",
     tabindex: 0,
-    "area-labeled-by": getTabId(index),
+    "area-labeled-by": getTabId(tabId),
   });
 
   // Make sure activeTabId is assigned to a tab that currently exists
   $: if (!$activeTabId || !tabs.some((tab) => tab.id === $activeTabId)) {
     $activeTabId = tabs.length ? tabs[0].id : defaultTabId;
+    
   }
 </script>
 

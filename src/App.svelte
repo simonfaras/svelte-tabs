@@ -13,8 +13,8 @@
 </script>
 
 <script lang="ts">
-  import Tabs from "./Tabs.svelte";
-  import Tab from "./Tab.svelte";
+  import Tabs from "./Tabs/Tabs.svelte";
+  import Tab from "./Tabs/Tab.svelte";
 
   let items: Array<{
     title: string;

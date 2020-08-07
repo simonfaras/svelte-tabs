@@ -1,8 +1,3 @@
-<script lang="ts" context="module">
-  const LEFT_ARROW = 37;
-  const RIGHT_ARROW = 39;
-</script>
-
 <script lang="ts">
   import { getContext, onMount } from "svelte";
   import { tabsContextKey } from "./context";
@@ -31,10 +26,10 @@
   const handleClick = () => ($activeTabId = id);
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.keyCode === LEFT_ARROW) {
+    if (event.key === "ArrowLeft") {
       changeTabFocus(id, -1);
     }
-    if (event.keyCode === RIGHT_ARROW) {
+    if (event.key === "ArrowRight") {
       changeTabFocus(id, 1);
     }
   };
