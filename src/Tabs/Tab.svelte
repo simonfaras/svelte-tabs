@@ -53,4 +53,4 @@
 <slot
   {handlers}
   {active}
-  tab={{ role: 'tab', id: getTabId(id), 'aria-selected': active, 'area-controls': getPanelId(id), tabindex: active ? 0 : -1 }} />
+  tabAttributes={{ role: 'tab', id: getTabId(id), 'aria-selected': active, 'area-controls': getPanelId(id), tabindex: active ? 0 : -1 }} />

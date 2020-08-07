@@ -48,8 +48,8 @@
       let:getContentAttributes>
       <nav class="nav" {...getTabsAttributes()}>
         {#each items as item (item.id)}
-          <Tab id={item.id} let:active let:handlers let:tab>
-            <button class="nav-item" class:active use:handlers {...tab}>
+          <Tab id={item.id} let:active let:handlers let:tabAttributes>
+            <button class="nav-item" class:active use:handlers {...tabAttributes}>
               {item.title}
             </button>
           </Tab>

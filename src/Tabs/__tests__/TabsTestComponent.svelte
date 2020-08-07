@@ -19,8 +19,8 @@
 
   <nav {...getTabsAttributes()}>
     {#each items as item (item.id)}
-      <Tab id={item.id} let:active let:handlers let:tab>
-        <button use:handlers {...tab}>
+      <Tab id={item.id} let:active let:handlers let:tabAttributes>
+        <button use:handlers {...tabAttributes}>
           {item.title} [{active ? 'active' : 'inactive'}]
         </button>
       </Tab>
