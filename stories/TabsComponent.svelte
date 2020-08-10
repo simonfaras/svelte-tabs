@@ -1,26 +1,19 @@
 <script lang="ts" context="module">
-  const allItems = [
-    { title: "First", content: "First Tab", id: "one" },
-    { title: "Second", content: "Second Tab", id: "two" },
-    { title: "Third", content: "Third Tab", id: "three" },
-    { title: "Fourth", content: "Fourth Tab", id: "four" },
-    { title: "Fifth", content: "Fifth Tab", id: "five" },
-    { title: "Sixth", content: "Sixth Tab", id: "six" },
-    { title: "Seventh", content: "Seventh Tab", id: "seven" },
-    { title: "Eight", content: "Eight Tab", id: "eight" },
-    { title: "Ninth", content: "Ninth Tab", id: "nine" },
-  ];
+  const allItems = [];
 </script>
 
 <script lang="ts">
-  import Tabs from "./Tabs/Tabs.svelte";
-  import Tab from "./Tabs/Tab.svelte";
+  import { Tabs, Tab } from "../src/index";
 
-  let items: Array<{
+  export let items: Array<{
     title: string;
     content: string;
     id: string;
-  }> = allItems.slice(0, 3);
+  }>;
+
+  export let test: string;
+
+  const baseItems = items;
 
   const getItemById = (id: string) => items.find((item) => item.id === id);
 </script>
@@ -30,12 +23,12 @@
     <button
       on:click={() => {
         if (items.length > 1) {
-          items = allItems.slice(0, items.length - 1);
+          items = baseItems.slice(0, items.length - 1);
         }
       }}>
       Remove Item
     </button>
-    <button on:click={() => (items = allItems.slice(0, items.length + 1))}>
+    <button on:click={() => (items = baseItems.slice(0, items.length + 1))}>
       Add Item
     </button>
   </div>
@@ -49,7 +42,11 @@
       <nav class="nav" {...getTabsAttributes()}>
         {#each items as item (item.id)}
           <Tab id={item.id} let:active let:handlers let:tabAttributes>
-            <button class="nav-item" class:active use:handlers {...tabAttributes}>
+            <button
+              class="nav-item"
+              class:active
+              use:handlers
+              {...tabAttributes}>
               {item.title}
             </button>
           </Tab>

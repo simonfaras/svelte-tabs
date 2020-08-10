@@ -105,6 +105,7 @@ dist
 
 # Build
 public/build/
+dist/
 
 # IDE/editor
 .vscode/
